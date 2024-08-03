@@ -8,26 +8,26 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (_,res) => {
+app.get("/", (_, res) => {
     return res.status(200).json({
-        message:"I am from backend",
-        success:true
+        message: "I am from backend",
+        success: true
     })
 })
 
 app.use(express.json());
-app.use(cookieParser()); 
-app.use(urlencoded({extended:true}));
+app.use(cookieParser());
+app.use(urlencoded({ extended: true }));
 
 const corsOption = {
-    origin:'http://localhost:5173',
-    Credentials:true
+    origin: 'http://localhost:5173',
+    Credentials: true
 }
 app.use(cors(corsOption));
 
 
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     connectDB();
     console.log(`Server listen at port ${PORT}`);
 })
